@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div class="container">
+	<div class="topic">
+<p id="name"></p>
+<script>
+const txt1 = '{"firstname": "Serdar Bugra", "lastname": "Kala"}'
+const obj1 = JSON.parse(txt1);
+document.getElementById("name").innerHTML = obj1.firstname+" "+obj1.lastname;
+</script>
+</div>
+<body>
+
+  <div class="input-form">
+      <input type="text" name="city" placeholder="Enter the city name..." id="inputField">
+      <button id="search">Search</button>
+  </div>
+  
+  <div id="temperature">
+		
+  </div>
+
+ <script type="text/javascript">
+    console.log("ABLE TO ACCESS THIS");
+	   const searchBtn = document.getElementById('search');
+
+	   searchBtn.addEventListener("click",() => {
+           console.log("clicked");
+		const key = document.getElementById('inputField').value;
+		if(key !== ""){
+			getWeather(key);
+		}
+	})
+
+	async function getWeather(key){
+		const result = await fetch(`https://api.weatherapi.com/v1/current.json?key=5f8dd7dca16f4aee894150959220502&q=${key}`);
+		const resultJson = await result.json();
+		console.log(resultJson);
+		const temperature = document.getElementById('temperature');
+		const value = resultJson;
+		temperature.insertAdjacentHTML("afterend",`
+            <div class="data-card">
+				<div><strong></strong>  ${value.current.temp_c}°C
+            </div>
+
+			`)
+	}
+    	
+			</script>
+		</body>  
+	</div>
+</body>
+</html>
