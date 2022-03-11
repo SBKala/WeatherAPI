@@ -34,7 +34,7 @@ document.getElementById("name").innerHTML = obj1.firstname+" "+obj1.lastname;
 	})
 
 	async function getWeather(key){
-		const result = await fetch(`https://api.weatherapi.com/v1/current.json?key=5f8dd7dca16f4aee894150959220502&q=${key}`);
+		const result = await fetch(`https://api.weatherapi.com/v1/current.json?key=***YOUR API KEY HERE***&q=${key}`);
 		const resultJson = await result.json();
 		console.log(resultJson);
 		const temperature = document.getElementById('temperature');
